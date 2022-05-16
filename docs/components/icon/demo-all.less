@@ -1,0 +1,80 @@
+.qnet-icon-doc {
+  background: #fff;
+  padding: 4px 0;
+
+  &-search {
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+
+    input {
+      width: 50%;
+      min-width: 290px;
+      box-sizing: border-box;
+      border: 0;
+      border-radius: 4px;
+      background: #f5f7fa;
+      text-align: center;
+      font-size: 14px;
+      outline: none;
+      margin: 0 auto;
+      padding: 8px 0;
+    }
+  }
+
+  h3 {
+    padding-left: 12px;
+    margin-top: 28px;
+    font-size: 18px;
+  }
+
+  &-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    > i {
+      width: 140px;
+    }
+  }
+
+  &-item {
+    position: relative;
+    width: 140px;
+    height: 120px;
+    padding: 12px;
+    border-radius: 4px;
+    color: #5c6b77;
+    list-style: none;
+    text-align: center;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+
+    svg {
+      width: 32px;
+      height: 32px;
+      transition: fill 0.2s ease-in-out;
+    }
+
+    &:hover {
+      background-color: fade(#1677ff, 80%);
+      color: #fff;
+      cursor: pointer;
+
+      svg {
+        fill: #fff;
+      }
+    }
+  }
+
+  &-icon {
+    font-size: 32px;
+    padding-top: 8px;
+  }
+
+  &-label {
+    font-size: 14px;
+    word-wrap: break-word;
+    padding-top: 8px;
+  }
+}

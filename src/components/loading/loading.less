@@ -1,0 +1,96 @@
+@class-prefix-loading: ~'qnet-loading';
+
+.@{class-prefix-loading} {
+  --color: var(--qnet-color-weak);
+  --size: 32px;
+  --text-color: var(--qnet-color-text);
+  --text-size: 14px;
+
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+
+  &-vertical {
+    flex-direction: unset;
+
+    .@{class-prefix-loading}-text {
+      margin-top: unset;
+      margin-left: 8px;
+    }
+  }
+
+  &-text {
+    color: var(--text-color);
+    font-size: var(--text-size);
+    margin-top: 8px;
+  }
+
+  &-spin {
+    width: var(--size);
+    height: var(--size);
+    overflow: hidden;
+
+    &-svg {
+      width: 100%;
+      height: 100%;
+      animation: qnet-loading-rotate 0.8s infinite linear;
+      > .@{class-prefix-loading}-spin-fill {
+        stroke: var(--color);
+      }
+    }
+  }
+
+  &-circle {
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+    color: var(--color);
+    overflow: hidden;
+    animation: qnet-loading-rotate 0.8s infinite linear;
+    animation-timing-function: steps(12);
+
+    i {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      &::before {
+        display: block;
+        width: 2px;
+        height: 25%;
+        margin: 0 auto;
+        background-color: currentColor;
+        border-radius: 40%;
+        content: ' ';
+      }
+    }
+  }
+
+  &-dot {
+    display: inline-flex;
+    align-items: center;
+    width: var(--size);
+    color: var(--color);
+  }
+
+  .iconfontLoop(12);
+}
+
+.iconfontLoop(@n, @i: 1) when (@i =< @n) {
+  .@{class-prefix-loading}-circle--@{i} {
+    transform: rotate(30deg * @i);
+    opacity: 1 - 0.0625 * @i;
+  }
+  .iconfontLoop(@n, @i + 1);
+}
+
+@keyframes qnet-loading-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
