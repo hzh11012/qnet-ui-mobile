@@ -2,12 +2,25 @@
   "name": "qnet-ui-mobile",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es/index.js",
+  "types": "lib/es/index.d.ts",
+  "typings": "lib/es/index.d.ts",
+  "unpkg": "lib/umd/qnet-ui-mobile.js",
   "scripts": {
     "dev:site": "dumi dev",
     "build:site": "rimraf dist && dumi build",
-    "preview:site": "npm run build:site && serve dist"
+    "preview:site": "npm run build:site && serve dist",
+    "build": "gulp"
   },
+  "sideEffects": [
+    "**/*.css",
+    "**/*.less",
+    "./es/index.js",
+    "./src/index.ts",
+    "./es/global/index.js",
+    "./src/global/index.ts"
+  ],
   "keywords": [],
   "publishConfig": {
     "access": "public",
@@ -21,6 +34,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.10",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.17.12",
     "@babel/plugin-transform-runtime": "^7.17.10",
     "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
@@ -32,12 +46,17 @@
     "@typescript-eslint/parser": "^5.23.0",
     "ahooks": "^3.3.10",
     "antd-mobile": "^5.12.2",
+    "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
     "dumi": "^1.1.41-rc.2",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-prettier": "^4.0.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-less": "^5.0.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
     "less": "^4.1.2",
     "lorem-ipsum": "^2.0.4",
     "prettier": "^2.6.2",
@@ -46,7 +65,10 @@
     "react-dom": "^18.0.0",
     "serve": "^13.0.2",
     "style-loader": "^3.3.1",
-    "typescript": "^4.6.4"
+    "through2": "^4.0.2",
+    "typescript": "^4.6.4",
+    "webpack": "^5.72.1",
+    "webpack-stream": "^7.0.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",

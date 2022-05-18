@@ -26,7 +26,7 @@
     "resolveJsonModule": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "lib", "es", "dist", ".dumi"],
+  "exclude": ["node_modules", "lib", "dist", ".dumi"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS",
