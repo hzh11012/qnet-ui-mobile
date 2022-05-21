@@ -3,7 +3,8 @@ export const components = {
     '/components/button',
     '/components/alert',
     '/components/icon',
-    '/components/space'
+    '/components/space',
+    '/components/divider'
   ],
   feedback: ['/components/loading']
 };

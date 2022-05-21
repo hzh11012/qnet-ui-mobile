@@ -33,8 +33,6 @@ export type ButtonProps = {
   url?: string;
   // 点击后跳转的链接 是否在新页面打开
   target?: boolean;
-  // 类名
-  className?: string;
   // 点击事件
   onClick?: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -158,8 +156,7 @@ Button.propTypes = {
   url: t.string,
   target: t.bool,
   children: t.node,
-  onClick: t.func,
-  className: t.string
+  onClick: t.func
 };
 
 export default Button;
