@@ -33,6 +33,8 @@ export type ButtonProps = {
   url?: string;
   // 点击后跳转的链接 是否在新页面打开
   target?: boolean;
+  // 类名
+  className?: string;
   // 点击事件
   onClick?: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -77,7 +79,8 @@ const Button: React.FC<ButtonProps> = props => {
     loadingIcon,
     loadingText,
     url,
-    target
+    target,
+    className
   } = newProps;
   const [innerLoading, setInnerLoading] = useState(false);
   const newLoading = loading === 'auto' ? innerLoading : loading;
@@ -116,6 +119,7 @@ const Button: React.FC<ButtonProps> = props => {
       onClick={handleClick}
       disabled={newdisabled}
       className={classNames(
+        className,
         classPrefix,
         `${classPrefix}-${type}`,
         `${classPrefix}-${size}`,
@@ -154,7 +158,8 @@ Button.propTypes = {
   url: t.string,
   target: t.bool,
   children: t.node,
-  onClick: t.func
+  onClick: t.func,
+  className: t.string
 };
 
 export default Button;
