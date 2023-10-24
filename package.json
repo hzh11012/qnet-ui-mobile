@@ -1,6 +1,6 @@
 {
   "name": "qnet-ui-mobile",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "lib/cjs/index.js",
   "module": "lib/es/index.js",
@@ -20,6 +20,9 @@
     "./src/index.ts",
     "./es/global/index.js",
     "./src/global/index.ts"
+  ],
+  "files": [
+    "lib"
   ],
   "keywords": [],
   "publishConfig": {
