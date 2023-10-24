@@ -14,6 +14,10 @@ const config: IConfig = {
     {
       title: '组件',
       path: '/components'
+    },
+    {
+      title: 'GitHub',
+      path: 'https://github.com/hzh11012/qnet-ui-mobile'
     }
   ],
   locales: [['zh', '中文']],
@@ -34,8 +38,16 @@ const config: IConfig = {
         path: '/guide/faq'
       },
       {
+        title: 'CSS 变量',
+        path: '/guide/css-variables'
+      },
+      {
         title: '按需加载',
         path: '/guide/import-on-demand'
+      },
+      {
+        title: '预构建产物',
+        path: '/guide/pre-built-bundles'
       }
     ],
     '/components': [

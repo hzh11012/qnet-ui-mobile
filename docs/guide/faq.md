@@ -30,3 +30,13 @@ html {
 
 - [300ms tap delay, gone away](https://developers.google.com/web/updates/2013/12/300ms-tap-delay-gone-away)
 - [More Responsive Tapping on iOS](https://webkit.org/blog/5610/more-responsive-tapping-on-ios/)
+
+### 文档 demo 中出现的 `import xxx from 'demos'` 是什么？
+
+`demos` 并不是一个 npm 包，而是 qnet-ui-mobile 项目中创建的一个别名。它的实现在[这里](https://github.com/hzh11012/qnet-ui-mobile/blob/master/src/demos/index.ts)。
+
+请不要尝试 `npm install demos`。你可以直接忽略它们。
+
+### qnet-ui-mobile 有 CDN 上的 umd 包吗？
+
+有的，具体用法请参考[这篇文档](/guide/pre-built-bundles)。

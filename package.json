@@ -1,6 +1,6 @@
 {
   "name": "qnet-ui-mobile",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "lib/cjs/index.js",
   "module": "lib/es/index.js",
@@ -67,6 +67,7 @@
     "style-loader": "^3.3.1",
     "through2": "^4.0.2",
     "typescript": "^4.6.4",
+    "vite": "^4.5.0",
     "webpack": "^5.72.1",
     "webpack-stream": "^7.0.0"
   },

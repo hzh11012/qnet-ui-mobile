@@ -7,6 +7,8 @@ const tsconfig = require('./tsconfig.json');
 const through = require('through2');
 const webpackStream = require('webpack-stream');
 const webpack = require('webpack');
+const vite = require('vite');
+const packageJson = require('./package.json');
 
 const paths = {
   dest: {
@@ -110,6 +112,51 @@ function generatePackageJSON() {
     .pipe(gulp.dest(paths.dest.pkg));
 }
 
+function getViteConfigForPackage({ env, formats, external }) {
+  const name = packageJson.name;
+  const isProd = env === 'production';
+  return {
+    root: process.cwd(),
+    mode: env,
+    logLevel: 'silent',
+    define: { 'process.env.NODE_ENV': `"${env}"` },
+    build: {
+      cssTarget: 'chrome61',
+      lib: {
+        name: 'qnet-ui-mobile',
+        entry: './lib/es/index.js',
+        formats,
+        fileName: format => `${name}.${format}${isProd ? '' : `.${env}`}.js`
+      },
+      rollupOptions: {
+        external,
+        output: {
+          dir: './lib/bundle',
+          globals: {
+            react: 'React',
+            'react-dom': 'ReactDOM'
+          }
+        }
+      },
+      minify: isProd ? 'esbuild' : false
+    }
+  };
+}
+
+async function buildBundles(cb) {
+  const envs = ['development', 'production'];
+  const configs = envs.map(env =>
+    getViteConfigForPackage({
+      env,
+      formats: ['es', 'cjs', 'umd'],
+      external: ['react', 'react-dom']
+    })
+  );
+
+  await Promise.all(configs.map(config => vite.build(config)));
+  cb && cb();
+}
+
 function umdWebpack() {
   return gulp
     .src('lib/es/index.js')
@@ -192,6 +239,7 @@ const build = gulp.series(
   buildCJS,
   gulp.parallel(buildDeclaration, buildLess),
   generatePackageJSON,
+  buildBundles,
   umdWebpack
 );
 

@@ -6,6 +6,8 @@
 $ npm install --save qnet-ui-mobile
 # or
 $ yarn add qnet-ui-mobile
+# or
+$ pnpm add qnet-ui-mobile
 ```
 
 ## 引入
@@ -35,6 +37,10 @@ import { Button } from 'qnet-ui-mobile';
   ]
 }
 ```
+
+<Alert type="warning">
+  不要把 node_modules 排除在 babel 编译之外，不然上面的配置不会有效果
+</Alert>
 
 ## 在线体验
 
