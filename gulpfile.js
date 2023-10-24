@@ -12,14 +12,14 @@ const packageJson = require('./package.json');
 
 const paths = {
   dest: {
-    cjs: 'lib/cjs', // commonjs 文件存放的目录名
-    es: 'lib/es', // ES module 文件存放的目录名
-    umd: 'lib/umd', // umd 文件存放的目录名
-    pkg: 'lib' // package.json 文件存放的目录名
+    cjs: 'lib/cjs/', // commonjs 文件存放的目录名
+    es: 'lib/es/', // ES module 文件存放的目录名
+    umd: 'lib/umd/', // umd 文件存放的目录名
+    pkg: './lib/' // package.json 文件存放的目录名
   },
-  styles: ['src/**/*.less', '!**/demos/**/*'], // 样式文件路径
-  scripts: ['src/**/*.{ts,tsx}', '!**/demos/**/*'], // 脚本文件路径
-  pkg: ['./package.json']
+  styles: ['./src/**/*.less', '!**/demos/**/*'], // 样式文件路径
+  scripts: ['./src/**/*.{ts,tsx}', '!**/demos/**/*'], // 脚本文件路径
+  pkg: './package.json'
 };
 
 // 将less打包成css
@@ -167,7 +167,7 @@ function umdWebpack() {
             filename: 'qnet-ui-mobile.js',
             library: {
               type: 'umd',
-              name: 'qnetMobileUI'
+              name: 'qnet-ui-mobile'
             }
           },
           mode: 'production',
@@ -234,13 +234,21 @@ function umdWebpack() {
     .pipe(gulp.dest(paths.dest.umd));
 }
 
-const build = gulp.series(
+function copyMetaFiles() {
+  return gulp
+    .src(['./README.md', './LICENSE.txt'])
+    .pipe(gulp.dest(paths.dest.pkg));
+}
+
+exports.umdWebpack = umdWebpack;
+exports.buildBundles = buildBundles;
+
+exports.default = gulp.series(
   buildES,
   buildCJS,
   gulp.parallel(buildDeclaration, buildLess),
+  copyMetaFiles,
   generatePackageJSON,
   buildBundles,
   umdWebpack
 );
-
-exports.default = build;

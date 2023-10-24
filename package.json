@@ -1,17 +1,20 @@
 {
   "name": "qnet-ui-mobile",
-  "version": "1.0.2",
-  "description": "",
-  "main": "lib/cjs/index.js",
-  "module": "lib/es/index.js",
-  "types": "lib/es/index.d.ts",
-  "typings": "lib/es/index.d.ts",
-  "unpkg": "lib/umd/qnet-ui-mobile.js",
+  "version": "1.0.8",
+  "main": "./cjs/index.js",
+  "module": "./es/index.js",
+  "types": "./es/index.d.ts",
+  "typings": "./es/index.d.ts",
+  "unpkg": "./umd/qnet-ui-mobile.js",
+  "files": [
+    "./lib"
+  ],
   "scripts": {
     "dev:site": "dumi dev",
     "build:site": "rimraf dist && dumi build",
     "preview:site": "npm run build:site && serve dist",
-    "build": "gulp"
+    "build": "rimraf lib && gulp",
+    "publish": "npm publish ./lib"
   },
   "sideEffects": [
     "**/*.css",
@@ -21,19 +24,16 @@
     "./es/global/index.js",
     "./src/global/index.ts"
   ],
-  "files": [
-    "lib"
-  ],
   "keywords": [],
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
   "authors": {
-    "name": "ice",
+    "name": "Ice_Mio",
     "email": "917944345@qq.com"
   },
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.17.10",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
