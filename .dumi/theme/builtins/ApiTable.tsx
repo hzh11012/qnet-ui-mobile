@@ -1,5 +1,5 @@
 const Api = () => {
-  return 'hello'
-}
+  return 'hello';
+};
 
-export default Api
+export default Api;

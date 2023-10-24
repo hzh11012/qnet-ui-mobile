@@ -1,8 +1,8 @@
-import React, { useState, useContext, useRef } from 'react'
-import { Tabs } from 'antd-mobile'
+import React, { useState, useContext, useRef } from 'react';
+import { Tabs } from 'antd-mobile';
 // @ts-ignore
-import { history } from 'dumi'
-import type { IPreviewerComponentProps } from 'dumi/theme'
+import { history } from 'dumi';
+import type { IPreviewerComponentProps } from 'dumi/theme';
 import {
   context,
   // useRiddle,
@@ -12,30 +12,30 @@ import {
   useTSPlaygroundUrl,
   Link,
   AnchorLink,
-  usePrefersColor,
-} from 'dumi/theme'
+  usePrefersColor
+} from 'dumi/theme';
 // import { useCodeSandbox } from './use-code-sandbox'
-import type { ICodeBlockProps } from '../SourceCode'
-import SourceCode from '../SourceCode'
-import './Previewer.less'
+import type { ICodeBlockProps } from '../SourceCode';
+import SourceCode from '../SourceCode';
+import './Previewer.less';
 
 export interface IPreviewerProps extends IPreviewerComponentProps {
   /**
    * enable transform to change CSS containing block for demo
    */
-  transform?: boolean
+  transform?: boolean;
   /**
    * modify background for demo area
    */
-  background?: string
+  background?: string;
   /**
    * configurations for action button
    */
-  hideActions?: ('CSB' | 'RIDDLE')[]
+  hideActions?: ('CSB' | 'RIDDLE')[];
   /**
    * replace builtin demo url
    */
-  demoUrl?: string
+  demoUrl?: string;
 }
 
 /**
@@ -48,21 +48,21 @@ function getSourceType(
   source: IPreviewerComponentProps['sources']['_']
 ) {
   // use file extension as source type first
-  let type = file.match(/\.(\w+)$/)?.[1]
+  let type = file.match(/\.(\w+)$/)?.[1];
 
   if (!type) {
-    type = source.tsx ? 'tsx' : 'jsx'
+    type = source.tsx ? 'tsx' : 'jsx';
   }
 
-  return type as ICodeBlockProps['lang']
+  return type as ICodeBlockProps['lang'];
 }
 
 const Previewer: React.FC<IPreviewerProps> = oProps => {
-  const demoRef = useRef<HTMLDivElement>(null)
-  const { locale } = useContext(context)
-  const props = useLocaleProps<IPreviewerProps>(locale, oProps)
-  const isActive = history?.location.hash === `#${props.identifier}`
-  const isSingleFile = Object.keys(props.sources).length === 1
+  const demoRef = useRef<HTMLDivElement>(null);
+  const { locale } = useContext(context);
+  const props = useLocaleProps<IPreviewerProps>(locale, oProps);
+  const isActive = history?.location.hash === `#${props.identifier}`;
+  const isSingleFile = Object.keys(props.sources).length === 1;
   // const openCSB = useCodeSandbox(
   //   props.hideActions?.includes('CSB') ? null : props
   // )
@@ -72,20 +72,21 @@ const Previewer: React.FC<IPreviewerProps> = oProps => {
   const [execMotions, isMotionRunning] = useMotions(
     props.motions || [],
     demoRef.current
-  )
-  const [copyCode, copyStatus] = useCopy()
-  const [currentFile, setCurrentFile] = useState('_')
+  );
+  const [copyCode, copyStatus] = useCopy();
+  const [currentFile, setCurrentFile] = useState('_');
   const [sourceType, setSourceType] = useState(
     getSourceType(currentFile, props.sources[currentFile])
-  )
+  );
   const currentFileCode =
-    props.sources[currentFile][sourceType] || props.sources[currentFile].content
-  const playgroundUrl = useTSPlaygroundUrl(locale, currentFileCode)
-  const [color] = usePrefersColor()
+    props.sources[currentFile][sourceType] ||
+    props.sources[currentFile].content;
+  const playgroundUrl = useTSPlaygroundUrl(locale, currentFileCode);
+  const [color] = usePrefersColor();
 
   function handleFileChange(filename: string) {
-    setCurrentFile(filename)
-    setSourceType(getSourceType(filename, props.sources[filename]))
+    setCurrentFile(filename);
+    setSourceType(getSourceType(filename, props.sources[filename]));
   }
 
   return (
@@ -94,14 +95,14 @@ const Previewer: React.FC<IPreviewerProps> = oProps => {
       className={[
         props.className,
         '__dumi-default-previewer',
-        isActive ? '__dumi-default-previewer-target' : '',
+        isActive ? '__dumi-default-previewer-target' : ''
       ]
         .filter(Boolean)
         .join(' ')}
       id={props.identifier}
       data-debug={props.debug || undefined}
     >
-      <div className='__dumi-default-previewer-desc' data-title={props.title}>
+      <div className="__dumi-default-previewer-desc" data-title={props.title}>
         {props.title && (
           <AnchorLink to={`#${props.identifier}`}>{props.title}</AnchorLink>
         )}
@@ -109,8 +110,8 @@ const Previewer: React.FC<IPreviewerProps> = oProps => {
           <div dangerouslySetInnerHTML={{ __html: props.description }} />
         )}
       </div>
-      <div className='__dumi-default-previewer-actions'>
-        {props.debug && <span className='debug-badge'>Debug Only</span>}
+      <div className="__dumi-default-previewer-actions">
+        {props.debug && <span className="debug-badge">Debug Only</span>}
         {/*{openCSB && (*/}
         {/*  <button*/}
         {/*    title='Open demo on CodeSandbox.io'*/}
@@ -129,36 +130,36 @@ const Previewer: React.FC<IPreviewerProps> = oProps => {
         {/*)}*/}
         {props.motions && (
           <button
-            title='Execute motions'
-            className='__dumi-default-icon'
-            role='motions'
+            title="Execute motions"
+            className="__dumi-default-icon"
+            role="motions"
             disabled={isMotionRunning}
             onClick={() => execMotions()}
           />
         )}
-        <div className='spacer' />
+        <div className="spacer" />
         <button
-          title='Copy source code'
-          className='__dumi-default-icon'
-          role='copy'
+          title="Copy source code"
+          className="__dumi-default-icon"
+          role="copy"
           data-status={copyStatus}
           onClick={() => copyCode(currentFileCode)}
         />
         {sourceType === 'tsx' && (
-          <Link target='_blank' to={playgroundUrl}>
+          <Link target="_blank" to={playgroundUrl}>
             <button
-              title='Get JSX via TypeScript Playground'
-              className='__dumi-default-icon'
-              role='change-tsx'
-              type='button'
+              title="Get JSX via TypeScript Playground"
+              className="__dumi-default-icon"
+              role="change-tsx"
+              type="button"
             />
           </Link>
         )}
       </div>
-      <div className='__dumi-default-previewer-source-wrapper'>
+      <div className="__dumi-default-previewer-source-wrapper">
         {!isSingleFile && (
           <Tabs
-            className='__dumi-default-previewer-source-tab'
+            className="__dumi-default-previewer-source-tab"
             // prefixCls='__dumi-default-tabs'
             // moreIcon='···'
             stretch={false}
@@ -180,7 +181,7 @@ const Previewer: React.FC<IPreviewerProps> = oProps => {
             ))}
           </Tabs>
         )}
-        <div className='__dumi-default-previewer-source'>
+        <div className="__dumi-default-previewer-source">
           <SourceCode
             code={currentFileCode}
             lang={sourceType}
@@ -189,7 +190,7 @@ const Previewer: React.FC<IPreviewerProps> = oProps => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Previewer
+export default Previewer;

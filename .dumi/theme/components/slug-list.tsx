@@ -1,23 +1,23 @@
-import React, { FC } from 'react'
-import { AnchorLink } from 'dumi/theme'
-import './slug-list.less'
+import React, { FC } from 'react';
+import { AnchorLink } from 'dumi/theme';
+import './slug-list.less';
 
 type Slug = {
-  depth: number
-  value: string
-  heading: string
-}
+  depth: number;
+  value: string;
+  heading: string;
+};
 
 interface Props {
-  slugs: Slug[] | undefined
+  slugs: Slug[] | undefined;
 }
 
 export const SlugList: FC<Props> = props => {
-  const { slugs } = props
-  if (!slugs) return null
+  const { slugs } = props;
+  if (!slugs) return null;
   return (
-    <div className='qnet-doc-toc'>
-      <ul role='slug-list'>
+    <div className="qnet-doc-toc">
+      <ul role="slug-list">
         {slugs
           .filter(({ depth }, index) => (depth > 1 && depth < 4) || index === 0)
           .map(slug => (
@@ -29,5 +29,5 @@ export const SlugList: FC<Props> = props => {
           ))}
       </ul>
     </div>
-  )
-}
+  );
+};

@@ -1,21 +1,21 @@
-import React from 'react'
-import type { Language } from 'prism-react-renderer'
-import Highlight, { defaultProps } from 'prism-react-renderer'
-import { useCopy } from 'dumi/theme'
-import 'prismjs/themes/prism.css'
-import './SourceCode.less'
+import React from 'react';
+import type { Language } from 'prism-react-renderer';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import { useCopy } from 'dumi/theme';
+import 'prismjs/themes/prism.css';
+import './SourceCode.less';
 
 export interface ICodeBlockProps {
-  code: string
-  lang: Language
-  showCopy?: boolean
+  code: string;
+  lang: Language;
+  showCopy?: boolean;
 }
 
 export default ({ code, lang, showCopy = true }: ICodeBlockProps) => {
-  const [copyCode, copyStatus] = useCopy()
+  const [copyCode, copyStatus] = useCopy();
 
   return (
-    <div className='__dumi-default-code-block'>
+    <div className="__dumi-default-code-block">
       <Highlight
         {...defaultProps}
         code={code}
@@ -26,7 +26,7 @@ export default ({ code, lang, showCopy = true }: ICodeBlockProps) => {
           <pre className={className} style={style}>
             {showCopy && (
               <button
-                className='__dumi-default-icon __dumi-default-code-block-copy-btn'
+                className="__dumi-default-icon __dumi-default-code-block-copy-btn"
                 data-status={copyStatus}
                 onClick={() => copyCode(code)}
               />
@@ -42,5 +42,5 @@ export default ({ code, lang, showCopy = true }: ICodeBlockProps) => {
         )}
       </Highlight>
     </div>
-  )
-}
+  );
+};
