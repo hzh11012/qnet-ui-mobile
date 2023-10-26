@@ -46,6 +46,10 @@ const config: IConfig = {
         path: '/guide/theming'
       },
       {
+        title: '深色模式',
+        path: '/guide/dark-mode'
+      },
+      {
         title: '按需加载',
         path: '/guide/import-on-demand'
       },
@@ -78,6 +82,10 @@ const config: IConfig = {
       name: 'viewport',
       content:
         'width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover'
+    },
+    {
+      name: 'keywords',
+      content: 'qnet-ui-mobile, qnet ui mobile, React mobile components'
     }
   ],
   hash: true,

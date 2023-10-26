@@ -43,7 +43,7 @@ const home = () => {
           <img
             className={styles.headerImage}
             alt="header-img"
-            src="https://ftp.qnets.cn/qnetui/mobileBack.jpg"
+            src="https://ftp.qnets.cn/qnetui/mobileBack.png"
           />
         </div>
         {/* 功能特性 */}
@@ -67,7 +67,7 @@ const home = () => {
       {/* 底部导航 */}
       <div className={styles.footer}>
         <div className={styles.copyright}>
-          Copyright © 2022{' '}
+          Copyright © {new Date().getFullYear()}{' '}
           <a href="https://qnets.cn" target="_blank" rel="noreferrer">
             qnets.cn
           </a>
