@@ -6,5 +6,5 @@
 
 | 属性      | 说明                                              | 类型                            | 默认值         |
 | --------- | ------------------------------------------------- | ------------------------------- | -------------- |
-| Position  | 内容位置，仅在 `direction` 为 `horizontal` 时有效 | `'center' \| 'left' \| 'right'` | `'center'`     |
+| position  | 内容位置，仅在 `direction` 为 `horizontal` 时有效 | `'center' \| 'left' \| 'right'` | `'center'`     |
 | direction | 水平还是垂直类型                                  | `'horizontal' \| 'vertical'`    | `'horizontal'` |

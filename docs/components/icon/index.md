@@ -3,9 +3,11 @@
 语义化的矢量图形。图标是在一个单独的 npm 包中，如果你想使用图标，需要先安装 @qnet-icons/react 图标组件包：
 
 ```bash
-npm install --save @qnet-icons/react
+$ npm install --save @qnet-icons/react
 # or
-yarn add @qnet-icons/react
+$ yarn add @qnet-icons/react
+# or
+$ pnpm add @qnet-icons/react
 ```
 
 然后从这个包中引入你所需要的图标即可：

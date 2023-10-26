@@ -1,12 +1,12 @@
-import React, { FC } from 'react';
+import React from 'react';
+import type { FC, ReactNode } from 'react';
 import styles from './index.less';
 
 interface Props {
   title: string;
   padding?: string;
-  border?: string;
   background?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export const DemoBlock: FC<Props> = props => {
@@ -17,8 +17,7 @@ export const DemoBlock: FC<Props> = props => {
         className={styles.main}
         style={{
           padding: props.padding,
-          background: props.background,
-          border: props.border
+          background: props.background
         }}
       >
         {props.children}
@@ -29,5 +28,5 @@ export const DemoBlock: FC<Props> = props => {
 
 DemoBlock.defaultProps = {
   padding: '12px 12px',
-  background: '#ffffff'
+  background: 'var(--qnet-color-background)'
 };

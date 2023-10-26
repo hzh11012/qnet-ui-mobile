@@ -42,6 +42,10 @@ const config: IConfig = {
         path: '/guide/css-variables'
       },
       {
+        title: '主题',
+        path: '/guide/theming'
+      },
+      {
         title: '按需加载',
         path: '/guide/import-on-demand'
       },
@@ -124,7 +128,7 @@ const config: IConfig = {
       rules: []
     }
   },
-  plugins: ['./.dumi/plugin-gallery/index.ts']
+  plugins: ['./.dumi/plugin-gallery/index.ts', './.dumi/plugin-theme/index.ts']
 };
 
 export default config;
