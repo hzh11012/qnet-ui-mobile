@@ -58,11 +58,15 @@ export default () => {
   --qnet-color-warning: #ff8f1f;
   --qnet-color-danger: #ff3141;
   --qnet-color-white: #ffffff;
+  --qnet-color-box: #f5f5f5;
   --qnet-color-weak: #999999;
   --qnet-color-light: #cccccc;
   --qnet-border-color: #e8e9eb;
   --qnet-font-size-main: var(--qnet-font-size-6);
   --qnet-color-text: #333333;
+  --qnet-color-text-secondary: #666666;
+  --qnet-color-background: #ffffff;
+  --qnet-color-fill-content: var(--qnet-color-box);
 
   --qnet-font-family: -apple-system, blinkmacsystemfont, 'Helvetica Neue',
     helvetica, segoe ui, arial, roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB',
