@@ -1,7 +1,7 @@
 import React from 'react';
+import type { FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import { NativeProps, withNativeProps } from '../../utils/native-props';
-import { mergeProps } from '../../utils/with-default-props';
+import { mergeProps, NativeProps, withNativeProps } from '../../utils';
 import t from 'prop-types';
 
 const classPrefix = `qnet-divider`;
@@ -9,7 +9,7 @@ const classPrefix = `qnet-divider`;
 export type DividerProps = {
   position?: 'left' | 'right' | 'center';
   direction?: 'horizontal' | 'vertical';
-  children?: React.ReactNode;
+  children?: ReactNode;
 } & NativeProps;
 
 const defaultProps = {
@@ -17,7 +17,7 @@ const defaultProps = {
   direction: 'horizontal'
 };
 
-const Divider: React.FC<DividerProps> = props => {
+const Divider: FC<DividerProps> = props => {
   const newProps = mergeProps(defaultProps, props);
   const { position, direction, className, children } = newProps;
 

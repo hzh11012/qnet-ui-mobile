@@ -1,7 +1,7 @@
 import React from 'react';
+import type { FC } from 'react';
 import classNames from 'classnames';
-import { NativeProps, withNativeProps } from '../../utils/native-props';
-import { mergeProps } from '../../utils/with-default-props';
+import { NativeProps, withNativeProps, mergeProps } from '../../utils';
 import { useSpring, animated } from '@react-spring/web';
 import t from 'prop-types';
 
@@ -24,7 +24,7 @@ const defaultProps = {
   vertical: false
 };
 
-const Loading: React.FC<LoadingProps> = props => {
+const Loading: FC<LoadingProps> = props => {
   const newProps = mergeProps(defaultProps, props);
   const { color, size, type, textSize, textColor, vertical, children } =
     newProps;

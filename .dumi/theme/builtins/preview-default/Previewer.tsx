@@ -1,11 +1,11 @@
 import React, { useState, useContext, useRef } from 'react';
+import type { FC } from 'react';
 import { Tabs } from 'antd-mobile';
 // @ts-ignore
 import { history } from 'dumi';
 import type { IPreviewerComponentProps } from 'dumi/theme';
 import {
   context,
-  // useRiddle,
   useMotions,
   useCopy,
   useLocaleProps,
@@ -14,7 +14,6 @@ import {
   AnchorLink,
   usePrefersColor
 } from 'dumi/theme';
-// import { useCodeSandbox } from './use-code-sandbox'
 import type { ICodeBlockProps } from '../SourceCode';
 import SourceCode from '../SourceCode';
 import './Previewer.less';
@@ -57,18 +56,13 @@ function getSourceType(
   return type as ICodeBlockProps['lang'];
 }
 
-const Previewer: React.FC<IPreviewerProps> = oProps => {
+const Previewer: FC<IPreviewerProps> = oProps => {
   const demoRef = useRef<HTMLDivElement>(null);
   const { locale } = useContext(context);
   const props = useLocaleProps<IPreviewerProps>(locale, oProps);
   const isActive = history?.location.hash === `#${props.identifier}`;
   const isSingleFile = Object.keys(props.sources).length === 1;
-  // const openCSB = useCodeSandbox(
-  //   props.hideActions?.includes('CSB') ? null : props
-  // )
-  // const openRiddle = useRiddle(
-  //   props.hideActions?.includes('RIDDLE') ? null : props
-  // )
+
   const [execMotions, isMotionRunning] = useMotions(
     props.motions || [],
     demoRef.current
@@ -112,22 +106,6 @@ const Previewer: React.FC<IPreviewerProps> = oProps => {
       </div>
       <div className="__dumi-default-previewer-actions">
         {props.debug && <span className="debug-badge">Debug Only</span>}
-        {/*{openCSB && (*/}
-        {/*  <button*/}
-        {/*    title='Open demo on CodeSandbox.io'*/}
-        {/*    className='__dumi-default-icon'*/}
-        {/*    role='codesandbox'*/}
-        {/*    onClick={openCSB}*/}
-        {/*  />*/}
-        {/*)}*/}
-        {/*{openRiddle && (*/}
-        {/*  <button*/}
-        {/*    title='Open demo on Riddle'*/}
-        {/*    className='__dumi-default-icon'*/}
-        {/*    role='riddle'*/}
-        {/*    onClick={openRiddle}*/}
-        {/*  />*/}
-        {/*)}*/}
         {props.motions && (
           <button
             title="Execute motions"
@@ -160,8 +138,6 @@ const Previewer: React.FC<IPreviewerProps> = oProps => {
         {!isSingleFile && (
           <Tabs
             className="__dumi-default-previewer-source-tab"
-            // prefixCls='__dumi-default-tabs'
-            // moreIcon='···'
             stretch={false}
             defaultActiveKey={currentFile}
             onChange={handleFileChange}

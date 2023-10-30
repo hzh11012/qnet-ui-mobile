@@ -1,7 +1,7 @@
 import React from 'react';
+import type { FC, ReactNode, MouseEvent } from 'react';
 import classNames from 'classnames';
-import { NativeProps, withNativeProps } from '../../utils/native-props';
-import { mergeProps } from '../../utils/with-default-props';
+import { mergeProps, NativeProps, withNativeProps } from '../../utils';
 import t from 'prop-types';
 
 const classPrefix = `qnet-space`;
@@ -19,8 +19,8 @@ export type SpaceProps = {
     | 'stretch';
   wrap?: boolean;
   block?: boolean;
-  children?: React.ReactNode;
-  onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  children?: ReactNode;
+  onClick?: (event: MouseEvent<HTMLDivElement>) => void;
 } & NativeProps<'--gap' | '--gap-vertical' | '--gap-horizontal'>;
 
 const defaultProps = {
@@ -29,7 +29,7 @@ const defaultProps = {
   block: false
 };
 
-const Space: React.FC<SpaceProps> = props => {
+const Space: FC<SpaceProps> = props => {
   const newProps = mergeProps(defaultProps, props);
   const { direction, onClick } = newProps;
   return withNativeProps(

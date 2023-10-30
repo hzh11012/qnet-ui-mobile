@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import type { FC, MouseEventHandler } from 'react';
 import classNames from 'classnames';
 import Loading from '../loading';
-import { NativeProps, withNativeProps } from '../../utils/native-props';
-import { mergeProps } from '../../utils/with-default-props';
-import { isPromise } from '../../utils/validate';
+import {
+  NativeProps,
+  isPromise,
+  mergeProps,
+  withNativeProps
+} from '../../utils';
 import t from 'prop-types';
 
 const classPrefix = `qnet-button`;
@@ -61,7 +65,7 @@ const defaultProps: ButtonProps = {
   target: true
 };
 
-const Button: React.FC<ButtonProps> = props => {
+const Button: FC<ButtonProps> = props => {
   const newProps = mergeProps(defaultProps, props);
   const {
     onClick,
@@ -84,7 +88,7 @@ const Button: React.FC<ButtonProps> = props => {
   const newLoading = loading === 'auto' ? innerLoading : loading;
   const newdisabled = disabled || newLoading;
 
-  const handleClick: React.MouseEventHandler<HTMLButtonElement> = async e => {
+  const handleClick: MouseEventHandler<HTMLButtonElement> = async e => {
     if (url) {
       if (target) {
         window.open(url);

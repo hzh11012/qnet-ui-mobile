@@ -1,6 +1,6 @@
 {
   "name": "qnet-ui-mobile",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "main": "./cjs/index.js",
   "module": "./es/index.js",
   "types": "./es/index.d.ts",
@@ -24,7 +24,12 @@
     "./es/global/index.js",
     "./src/global/index.ts"
   ],
-  "keywords": [],
+  "keywords": [
+    "React",
+    "Qnet",
+    "UI",
+    "Mobile"
+  ],
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"

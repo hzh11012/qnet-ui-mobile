@@ -1,10 +1,10 @@
 export const components = {
   basic: [
     '/components/button',
-    '/components/alert',
     '/components/icon',
     '/components/space',
-    '/components/divider'
+    '/components/divider',
+    '/components/water-mark'
   ],
   feedback: ['/components/loading']
 };

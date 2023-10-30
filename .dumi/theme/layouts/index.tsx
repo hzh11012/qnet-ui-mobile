@@ -1,4 +1,5 @@
 import React, { useContext, useLayoutEffect, useState } from 'react';
+import type { FC } from 'react';
 import type { IRouteComponentProps } from '@umijs/types';
 import { context } from 'dumi/theme';
 import Navbar from '../components/Navbar';
@@ -9,7 +10,7 @@ import '../style/layout-default.less';
 import '../style/global.less';
 import styles from './index.less';
 
-const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
+const Layout: FC<IRouteComponentProps> = ({ children, location }) => {
   const { meta } = useContext(context);
   const showSideMenu = meta.sidemenu !== false && !meta.gapless;
   const showSlugs =
