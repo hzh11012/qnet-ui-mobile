@@ -40,7 +40,7 @@ const Demo1 = () => {
         <div style={divProps}>
           <DemoDescription content="把 WaterMark 放到一个 relative 定位的父元素，它会自动撑满这个父元素的范围。" />
           <WaterMark
-            image={'https://ftp.qnets.cn/qnetui/mobileBack.png'}
+            image={'https://cdn.qnets.cn/mobileBack.png'}
             imageWidth={80}
             height={60}
             fullPage={false}

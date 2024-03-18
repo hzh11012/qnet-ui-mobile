@@ -129,7 +129,7 @@ export default props => {
       <div className={styles.body} hidden={currentDemoIndex !== null}>
         <div className={styles.guide}>
           <img
-            src="https://ftp.qnets.cn/qnetui/ziran.png"
+            src="https://cdn.qnets.cn/ziran.png"
             alt="logo"
             className={styles.logo}
           />

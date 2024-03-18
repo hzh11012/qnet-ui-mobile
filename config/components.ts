@@ -4,7 +4,8 @@ export const components = {
     '/components/icon',
     '/components/space',
     '/components/divider',
-    '/components/water-mark'
+    '/components/water-mark',
+    '/components/pop-over'
   ],
   feedback: ['/components/loading']
 };

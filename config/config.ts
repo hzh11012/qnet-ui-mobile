@@ -4,8 +4,8 @@ import { IConfig } from 'dumi';
 const config: IConfig = {
   mode: 'site',
   title: 'Qnet UI Mobile',
-  logo: 'https://ftp.qnets.cn/qnetui/ziran.png',
-  favicon: 'https://ftp.qnets.cn/qnetui/ziran.png',
+  logo: 'https://cdn.qnets.cn/ziran.png',
+  favicon: 'https://cdn.qnets.cn/ziran.png',
   navs: [
     {
       title: '指南',
@@ -128,7 +128,7 @@ const config: IConfig = {
         min-height: 100vh;
       }
       .__dumi-default-layout-hero {
-        background: url(https://ftp.qnets.cn/qnetui/bg.png) no-repeat 100% / cover !important;
+        background: url(https://cdn.qnets.cn/mobileBack.png) no-repeat 100% / cover !important;
       }`
   ],
   themeConfig: {

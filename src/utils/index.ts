@@ -4,3 +4,6 @@ export * from './use-mutation-observer';
 export * from './uuid';
 export * from './validate';
 export * from './with-default-props';
+export * from './with-stop-propagation';
+export * from './render-container';
+export * from './use-should-render';

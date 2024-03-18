@@ -43,7 +43,7 @@ const home = () => {
           <img
             className={styles.headerImage}
             alt="header-img"
-            src="https://ftp.qnets.cn/qnetui/mobileBack.png"
+            src="https://cdn.qnets.cn/mobileBack.png"
           />
         </div>
         {/* 功能特性 */}

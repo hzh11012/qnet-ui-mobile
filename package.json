@@ -10,6 +10,7 @@
     "./lib"
   ],
   "scripts": {
+    "start": "npm run dev:site",
     "dev:site": "dumi dev",
     "build:site": "rimraf dist && dumi build",
     "preview:site": "npm run build:site && serve dist",
@@ -47,12 +48,13 @@
     "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
+    "@floating-ui/react-dom": "^2.0.6",
     "@types/lodash": "^4.14.182",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
-    "ahooks": "^3.3.10",
+    "ahooks": "^3.7.8",
     "antd-mobile": "^5.12.2",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",

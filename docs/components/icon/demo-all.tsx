@@ -86,7 +86,7 @@ const Demo = () => {
           onBlur={() => {
             setPlaceholder('输入英文关键词搜索，比如 wifi');
           }}
-          onChange={event => setSearchValue(event.target.value.trim)}
+          onChange={event => setSearchValue(event.target.value.trim())}
           placeholder={placeholder}
         />
       </div>
